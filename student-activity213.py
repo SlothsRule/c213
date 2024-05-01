@@ -37,35 +37,35 @@ def number_of_vehicle():
                         data.z - transform_location.location.z) ** 2)
 
         get_distance_of_bot_vehicles = []
-        for  in : #complete this code
-            if : #complete this code
-                get_distance_of_bot_vehicles. #complete this code
+        for each_car in all_vehicles: 
+            if each_car.id != world.id:
+                get_distance_of_bot_vehicles.append((distance(each_car.get_location()), each_car)) 
 
         vehicle_data = {}
         final_vehicle_result = []
 
         sorted_vehicles = sorted(get_distance_of_bot_vehicles)
 
-        for  in : #complete this code
-            if : #complete this code
+        for distance_of_car, vehicle in sorted_vehicles: #complete this code
+            if distance_of_car, vehicle in sorted_vehicles: #complete this code
                 break
-            vehicle_type = #complete this code
-            vehicle_data['vehicle_name'] = #complete this code
-            vehicle_data['distance'] = #complete this code
-            final_vehicle_result. #complete this code
+            vehicle_type = get_actor_display_name(vehicle)
+            vehicle_data['vehicle_name'] =  vehicle_type
+            vehicle_data['distance'] = distance_of_car
+            final_vehicle_result.append(vehicle_data)
 
             for distance_in_meter in final_vehicle_result: #complete this code
-                if : #complete this code
-                    dropped_vehicle. #complete this code
-                    time.#complete this code
-                    dropped_vehicle.#complete this code
-                    time.#complete this code
-                    dropped_vehicle.#complete this code
-                    time.#complete this code
-                    dropped_vehicle.#complete this code
-                    time.#complete this code
+                if distance_in_meter['distance'] > 6 and distance_in_meter['distance'] < 10: #complete this code
+                    dropped_vehicle.apply_control(carla.VehicleControl(throttle=0.2))
+                    time.sleep(3)
+                    dropped_vehicle.apply_control(carla.VehicleControl(throttle=0.2, steer=-0.2))
+                    time.sleep(2)#complete this code
+                    dropped_vehicle.apply_control(carla.VehicleControl(throttle=0.2, steer=0.1))#complete this code
+                    time.sleep(2)#complete this code
+                    dropped_vehicle.apply_control(carla.VehicleControl(throttle=0.2))#complete this code
+                    time.sleep(3)#complete this code
                     car_control()
-                if :
+                if distance_in_meter['distance'] > 1 and distance_in_meter['distance'] < 5:
                     print("Close car")
                     dropped_vehicle.apply_control(carla.VehicleControl(hand_brake=True))
                     time.sleep(2)
